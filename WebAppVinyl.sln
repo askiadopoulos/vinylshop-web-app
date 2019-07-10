@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppVinyl", "WebAppVinyl\WebAppVinyl.csproj", "{A9FE17B1-55C7-4C92-9D49-E3973066E89B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9FE17B1-55C7-4C92-9D49-E3973066E89B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9FE17B1-55C7-4C92-9D49-E3973066E89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9FE17B1-55C7-4C92-9D49-E3973066E89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9FE17B1-55C7-4C92-9D49-E3973066E89B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA4A6962-F62E-439C-8D70-438F1579348F}
+	EndGlobalSection
+EndGlobal
