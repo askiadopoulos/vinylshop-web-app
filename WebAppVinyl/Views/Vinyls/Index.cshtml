@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebAppVinyl.Models.Vinyl>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vinyl Collection</h2>
+
+<table id="vinyls" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>Release Year</th>
+            <th>Label</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vinyl in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(vinyl.Artist, "Edit", "Vinyls", new { id = vinyl.Id }, null)</td>
+                <td>@vinyl.Title</td>
+                <td>@vinyl.ReleaseYear</td>
+                <td>@vinyl.Label.Name</td>
+                <td>@vinyl.Genre.Name</td>
+                <td>@vinyl.Price  $</td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Vinyls", new { id = vinyl.Id }, null)
+                    @*@Html.ActionLink("Delete", "Delete", "Vinyls", null, new { @class = "btn btn-primary" })*@
+                    @*<button data-viewer-id="@vinyl.Id" class="btn-link js-delete">Delete</button>*@
+                </td>
+                <td> @Html.ActionLink("Details", "Details", "Vinyls", new { id = vinyl.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<p>
+    @Html.ActionLink("New Vinyl", "Create", "Vinyls", null, new { @class = "btn btn-primary" })
+</p>
+
