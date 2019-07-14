@@ -19,21 +19,5 @@ namespace WebAppVinyl.Models
     }
 
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-
-        public DbSet<Vinyl> Vinyls { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-        public DbSet<Label> Labels { get; set; }
-
-        public ApplicationDbContext()
-            : base("WebAppVinylDb", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
+   
 }

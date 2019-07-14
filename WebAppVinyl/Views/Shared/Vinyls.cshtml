@@ -16,6 +16,7 @@
             <th>Price</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -34,6 +35,7 @@
                     @*<button data-viewer-id="@vinyl.Id" class="btn-link js-delete">Delete</button>*@
                 </td>
                 <td> @Html.ActionLink("Details", "Details", "Vinyls", new { id = vinyl.Id }, null)</td>
+                <td><button data-vinyl-id="@vinyl.Id" class="btn btn-default btn-sm pull-right js-toggle-cart">Add To Cart</button></td>
             </tr>
         }
     </tbody>
@@ -43,4 +45,42 @@
 <p>
     @Html.ActionLink("New Vinyl", "Create", "Vinyls", null, new { @class = "btn btn-primary" })
 </p>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-cart").click(function (e) {
+                var button = $(e.target)
+                $.post("/api/carts", { vinylId: button.attr("data-vinyl-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Added");
+                    })
+                    .failed(function () {
+                        alert("Something Failed")
+                    });
+            });
+
+
+            //$(".js-toggle-following").click(function (e) {
+            //    var button = $(e.target)
+            //    $.post("/api/followings", { gigArtistId: button.attr("data-followee-id") })
+            //        .done(function () {
+            //            button
+            //                .removeClass("btn-default")
+            //                .addClass("btn-info")
+            //                .text("Following");
+            //        })
+            //        .failed(function () {
+            //            alert("Something Failed")
+            //        });
+            //});
+        });
+
+
+    </script>
+}
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebAppVinyl.Models;
 using System.Data.Entity;
 using WebAppVinyl.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace WebAppVinyl.Controllers
 {
@@ -26,7 +27,7 @@ namespace WebAppVinyl.Controllers
                 .Include(l => l.Label)
                 .ToList();
 
-            return View(vinyls);
+            return View("Vinyls",vinyls);
         }
 
         public ActionResult Create()
@@ -136,7 +137,31 @@ namespace WebAppVinyl.Controllers
                 .Include(g => g.Genre)
                 .Include(l => l.Label);
 
-            return View("Index", vinyl);
+            return View("Vinyls", vinyl);
+        }
+
+        [Authorize]
+        public ActionResult MyCart()
+        {
+            var userId = User.Identity.GetUserId();
+            // ksekinaw meso attendee giati apo ekei mporw na parw ton user kai ti sinaulia
+            // kai ola ta ipoloipa einai auta pou exei mesa to gig epeidi thelw onomata tou kathe property
+            // den vazw Id giati thelw na deiksw ta onomata opote prepei na parw ta object
+            var vinylToBuy = context.Carts
+                .Where(c => c.BuyerId == userId)
+                .Select(c => c.Vinyl)
+                .Include(c => c.Genre)
+                .Include(c => c.Label)
+                .ToList();
+
+            var viewModel = new VinylsViewModel
+            {
+                VinylToBuy = vinylToBuy,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Vinyls I am Attending"
+            };
+
+            return View(viewModel);
         }
     }
 }
