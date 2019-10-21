@@ -7,13 +7,13 @@ namespace WebAppVinyl.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateVinylLabelGenreClasses2 : IMigrationMetadata
+    public sealed partial class AddPhotoProp : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateVinylLabelGenreClasses2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPhotoProp));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907101758135_CreateVinylLabelGenreClasses2"; }
+            get { return "201908011731481_AddPhotoProp"; }
         }
         
         string IMigrationMetadata.Source

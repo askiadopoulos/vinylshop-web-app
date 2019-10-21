@@ -8,12 +8,14 @@
 <table id="vinyls" class="table table-bordered table-hover">
     <thead>
         <tr>
+            <th>Album Cover</th>
             <th>Artist</th>
             <th>Title</th>
             <th>Release Year</th>
             <th>Label</th>
             <th>Genre</th>
             <th>Price</th>
+            <th>Audio Clip</th>
             <th></th>
             <th></th>
             <th></th>
@@ -22,21 +24,29 @@
     <tbody>
         @foreach (var vinyl in Model)
         {
-            <tr>
-                <td>@Html.ActionLink(vinyl.Artist, "Edit", "Vinyls", new { id = vinyl.Id }, null)</td>
-                <td>@vinyl.Title</td>
-                <td>@vinyl.ReleaseYear</td>
-                <td>@vinyl.Label.Name</td>
-                <td>@vinyl.Genre.Name</td>
-                <td>@vinyl.Price  $</td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", "Vinyls", new { id = vinyl.Id }, null)
-                    @*@Html.ActionLink("Delete", "Delete", "Vinyls", null, new { @class = "btn btn-primary" })*@
-                    @*<button data-viewer-id="@vinyl.Id" class="btn-link js-delete">Delete</button>*@
-                </td>
-                <td> @Html.ActionLink("Details", "Details", "Vinyls", new { id = vinyl.Id }, null)</td>
-                <td><button data-vinyl-id="@vinyl.Id" class="btn btn-default btn-sm pull-right js-toggle-cart">Add To Cart</button></td>
-            </tr>
+        <tr>
+            <td><img src="/Photos/@vinyl.Image" height="100" alt="Album Cover"</td>
+            <td>@Html.ActionLink(vinyl.Artist, "Edit", "Vinyls", new { id = vinyl.Id }, null)</td>
+            <td>@vinyl.Title</td>
+            <td>@vinyl.ReleaseYear</td>
+            <td>@vinyl.Label.Name</td>
+            <td>@vinyl.Genre.Name</td>
+            <td>@vinyl.Price  $</td>
+            <td>
+                <audio controls class="audioPlayer">
+                    <source src="~/Audio/@vinyl.AudioClip" type="audio/ogg">
+                    Your browser does not support the audio tag.
+                </audio>
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", "Vinyls", new { id = vinyl.Id }, null)
+                @*@Html.ActionLink("Delete", "Delete", "Vinyls", null, new { @class = "btn btn-primary" })*@
+                @*<button data-vinyl-id="@vinyl.Id" class="btn btn-default btn-sm js-toggle-delete">Delete</button>*@
+            </td>
+            <td> @Html.ActionLink("Details", "Details", "Vinyls", new { id = vinyl.Id }, null)</td>
+            <td><button data-vinyl-id="@vinyl.Id" class="btn btn-default btn-sm pull-right js-toggle-cart">Add To Cart</button></td>
+
+        </tr>
         }
     </tbody>
 </table>
@@ -59,26 +69,11 @@
                             .addClass("btn-info")
                             .text("Added");
                     })
-                    .failed(function () {
+                    .fail(function () {
                         alert("Something Failed")
                     });
             });
-
-
-            //$(".js-toggle-following").click(function (e) {
-            //    var button = $(e.target)
-            //    $.post("/api/followings", { gigArtistId: button.attr("data-followee-id") })
-            //        .done(function () {
-            //            button
-            //                .removeClass("btn-default")
-            //                .addClass("btn-info")
-            //                .text("Following");
-            //        })
-            //        .failed(function () {
-            //            alert("Something Failed")
-            //        });
-            //});
-        });
+        }); debugger;
 
 
     </script>

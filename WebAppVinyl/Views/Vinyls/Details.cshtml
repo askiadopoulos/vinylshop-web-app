@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebAppVinyl.Models.Vinyl>
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<table>
+    @foreach (var vinyl in Model)
+    {
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                
+            </tr>
+            
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <img src="/Photos/@vinyl.Image" height="200" alt="Album Cover">
+                </td>
+                <td>
+                    <ul>@vinyl.Title</ul>
+                    <ul>@vinyl.Artist</ul>
+                    <ul>@vinyl.ReleaseYear</ul>
+                    <ul>@vinyl.Label.Name</ul>
+                    <ul>@vinyl.Genre.Name</ul>
+                    <ul>@vinyl.Price  $</ul>
+                    <ul>
+                        <button class="btn btn-default js-toggle-follow" data-vinyl-id="@vinyl.Id">Follow @vinyl.Artist</button>
+                    </ul>
+                </td>
+                
+            </tr>
+            <tr>
+                <th>
+                    <h3>
+                        Description
+                    </h3>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Descrption For Artists fasf ref
+                    csdbyfw ei fmweio nfywebfwoivuyweuy bfvdnu
+                    cvneyfiwsncusd7u scekuf wersvinsydf bywen viwunvye wfieuf wiyfbsd iub ry wuryv nsiyuvbry euvbnuergerb vuiev yernveruveriusnvyiu
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <h3>Track List</h3>
+                </th>
+            </tr>
+            <tr>
+                <td>To Do Task</td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+

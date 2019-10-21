@@ -137,7 +137,7 @@ namespace WebAppVinyl.Controllers
                 .Include(g => g.Genre)
                 .Include(l => l.Label);
 
-            return View("Vinyls", vinyl);
+            return View(vinyl);
         }
 
         [Authorize]
@@ -161,7 +161,7 @@ namespace WebAppVinyl.Controllers
                 Heading = "Vinyls I am Attending"
             };
 
-            return View(viewModel);
+            return View("MyCart",viewModel);
         }
     }
 }
